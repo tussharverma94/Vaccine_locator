@@ -8,7 +8,7 @@
     "npm" : "7.x"
   },
   "scripts": {
-    "start": "node App.js"
+    "start": "node app.js"
   },
   "author": "Gaurav Verma",
   "license": "ISC",
