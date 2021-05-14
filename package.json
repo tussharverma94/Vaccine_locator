@@ -7,6 +7,10 @@
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "15.x",
+    "npm" : "7.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tussharverma94/Vaccine_locator.git"
