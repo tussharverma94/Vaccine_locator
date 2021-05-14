@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Vaccine</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class"jumbotron text-center">
+        <h1 > Find Vaccination Center</h1>
+        <h3> Author: Gaurav Verma</h3>
+        <h3> Book vaccine at : 
+            <a href="https://www.cowin.gov.in/home">cowin.gov.in</a>
+        </h3>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h3>Find Through District</h3>
+            <form action='/', method="POST">
+                <div class="row">
+                    <input name="state" placeholder="Enter State"></input><br>
+                    <input name="district" placeholder="Enter District"></input><br>
+                    <input name="date" type="date" placeholder="date"></input><br>
+                 
+                    <input name="age" type="number" placeholder="Age"
+                    min="18" step="1" max="100"></input>
+
+                    <br><button type="submit">Find</button>       
+            </form>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <h2>Shortcuts</h2>
+            <div class="col-sm-4">
+                <h3>18+ Uttar Pradesh Lucknow</h3>
+                <form action='/adult' method="POST">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button type="submit" name="value1" value="1">18+ Today</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" name="value2" value="2">18+ Day 2</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" name="value3" value="3">18+ Day 3</button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button type="submit" name="value4" value="4">18+ Day 4</button>
+                        </div>
+                        <div class="col-sm-4" >
+                            <button type="submit" name="value5" value="5">18+ Day 5</button>
+                        </div>
+                        <div class="col-sm-4" >
+                            <button type="submit" name="value6" value="6">18+ Day 6</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-sm-4">
+                <h3>45+ Uttar Pradesh Lucknow</h3>
+                <form action='/experienced' method="POST">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button type="submit" name="value1" value="1">45+ Today</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" name="value2" value="2">45+ Day 2</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" name="value3" value="3">45+ Day 3</button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button type="submit" name="value4" value="4">45+ Day 4</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" name="value5" value="5">45+ Day 5</button>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" name="value6" value="6">45+ Day 6</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="Container">
+    
+        <h3>{{Reply}}</h3>
+        {{#each hospital_data as |hospital|}}
+            <div class="col-sm-4">
+                <h3>Hospital Capacity : {{hospital.capacity}}</h3>
+                <p>
+                    Vaccine Name : {{hospital.vaccine_name}}<br>
+                    Hospital Name : {{hospital.hospital_name}}<br>
+                    For age : {{hospital.vaccination_age}}
+                </p>
+            </div>
+        {{/each}}
+
+
+        {{!-- <div class="col-sm-4">
+                <h3>{{Reply}}</h3>
+                <ul>
+                    {{#each hospital_data as |hospital|}}
+                    <li>Hospital Capacity : {{hospital.capacity}}<br>
+                        Vaccine Name : {{hospital.vaccine_name}}<br>
+                        Hospital Name : {{hospital.hospital_name}}<br>
+                        For age : {{hospital.vaccination_age}}</li>
+                    {{/each}}
+                </ul>
+        </div> --}}
+    </div>
+    
+</body>
+</html>
