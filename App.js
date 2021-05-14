@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const main_route = require("./Routes/route")
+const main_route = require("./routes/route")
 // const adult = require("./Routes/adult")
 const SERVER_PORT = process.env.PORT || 4444
 
