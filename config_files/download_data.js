@@ -182,11 +182,11 @@ function find_district_id(state_id, user_district_name){
             if(err) {
                 return reject(err)
             }
-            if(typeof res.body.districts == 'undefined'){
+            if(typeof body.districts == 'undefined'){
                 return reject("Something went wrong!")
             }
-            console.log(res.body.districts)
-            for(list of res.body.districts){
+            console.log(body.districts)
+            for(list of body.districts){
                 // console.log(list)
                 if(list.district_name.toLowerCase() == user_district_name.toLowerCase()){
                     // console.log("found the place that is at district: " + list.district_name +
@@ -219,7 +219,7 @@ function check_avail(user_district_id, user_date, user_age){
             }
 
             let total_data = []
-            const centers = res.body.centers
+            const centers = body.centers
             for(center of centers){
                 sessions_of_center = center.sessions
                 // console.log(sessions_of_center)
