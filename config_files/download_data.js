@@ -182,7 +182,7 @@ function find_district_id(state_id, user_district_name){
             if(err) {
                 return reject(err)
             }
-
+            console.log(res.body.districts)
             for(list of res.body.districts){
                 // console.log(list)
                 if(list.district_name.toLowerCase() == user_district_name.toLowerCase()){
