@@ -70,12 +70,12 @@ route.post('/adult', (req, res) => {
             date_choose = val
         }
     } 
-    // console.log(date_choose)
+    console.log("date_choose = " + date_choose)
 
     temp_day = new Date()
     temp_date = parseInt(temp_day.getDate()) + parseInt(date_choose) - 1// as the month in js starts with 0 so no need to add +1 in users value
     user_date = (temp_date).toString() + '-' + (temp_day.getMonth() + 1).toString() + '-' + temp_day.getFullYear().toString()
-    // console.log("user_date " + user_date)
+    console.log("user_date " + user_date)
     
 
     // console.log("We are in Adult")
