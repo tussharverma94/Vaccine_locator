@@ -9,7 +9,7 @@
   },
   "engines": {
     "node": "15.x",
-    "npm" : "7.x"
+    "npm": "7.x"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/tussharverma94/Vaccine_locator#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
     "hbs": "^4.1.2",
     "request": "^2.88.2"
   }
