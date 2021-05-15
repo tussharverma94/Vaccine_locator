@@ -3,9 +3,18 @@ const app = express()
 const main_route = require("./Routes/locate")
 const path = require('path')
 const exphbs = require('express-handlebars')
+const request = require('request')
 
 // const adult = require("./Routes/adult")
 const SERVER_PORT = process.env.PORT || 4444
+
+request("https://cdn-api.co-vin.in/api/v2/admin/location/districts/34", {json : true}, (err, res, body) =>{
+    if(err) {
+        return reject(err)
+    }
+    console.log(body.districts)
+})
+
 
 app.set("view engine", ".hbs")
 app.set('views', path.join(__dirname, 'public_path')); 
