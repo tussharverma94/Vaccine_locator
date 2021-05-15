@@ -4,7 +4,7 @@ const route = require("express").Router()
 
 route.get("/", (req, res) =>{
     console.log("Hit the site")
-    res.render("index.hbs")
+    res.render("index")
 })
 
 route.post("/", (req, res) =>{
