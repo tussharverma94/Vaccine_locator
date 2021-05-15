@@ -183,7 +183,7 @@ function find_district_id(state_id, user_district_name){
                 return reject(err)
             }
             if(typeof res.body.districts == 'undefined'){
-                reject("Something went wrong!")
+                return reject("Something went wrong!")
             }
             console.log(res.body.districts)
             for(list of res.body.districts){
