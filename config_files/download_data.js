@@ -183,10 +183,10 @@ function find_district_id(state_id, user_district_name){
                 if(err) {
                     return reject(err)
                 }
+                console.log(body.districts)
                 if(typeof body.districts == 'undefined'){
                     return reject("Something went wrong!")
                 }
-                console.log(body.districts)
                 for(list of body.districts){
                     // console.log(list)
                     if(list.district_name.toLowerCase() == user_district_name.toLowerCase()){
@@ -200,7 +200,7 @@ function find_district_id(state_id, user_district_name){
                     reject("District Name is Wrong")
                 }
             })
-        }, 1000)
+        }, 500)
     })
 }
 
