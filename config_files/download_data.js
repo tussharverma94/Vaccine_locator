@@ -177,7 +177,7 @@ function find_district_id(state_id, user_district_name){
 
         // get destrict id from state_id_to_find
         req_districts = 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/' + state_id.toString()
-
+        console.log("req_districts = " + req_districts)
         request(req_districts, {json : true}, (err, res, body) =>{
             if(err) {
                 return reject(err)
