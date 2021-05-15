@@ -3,7 +3,8 @@ const task = require("../config_files/download_data")
 const route = require("express").Router()
 
 route.get("/", (req, res) =>{
-    res.render("home.hbs")
+    console.log("Hit the site")
+    res.render("index.hbs")
 })
 
 route.post("/", (req, res) =>{
@@ -22,7 +23,7 @@ route.post("/", (req, res) =>{
     // const data_check = task("Uttar Pradesh", "Lucknow", "14-05-2021", 45)
     
     if(state.length == 0 || district.length == 0 || user_age.length == 0 || final_date.length == 0){
-        return res.render("home.hbs", {
+        return res.render("index.hbs", {
             Reply : "WRONG INPUT"
         })
     }
@@ -31,11 +32,11 @@ route.post("/", (req, res) =>{
     data_check.then( (result) => {
         // console.log(result)
         if( result.length === 0){
-            res.render("home.hbs",{
+            res.render("index.hbs",{
                 Reply : `NO Data Found for ${user_date} in ${district} for age ${user_age}`
             })
         }else{
-            res.render("home.hbs",{
+            res.render("index.hbs",{
                 Reply : `Found Data for 
                 age: ${user_age} 
                 date : ${user_date} 
@@ -46,7 +47,7 @@ route.post("/", (req, res) =>{
         }
     })
     .catch((err) => {
-            res.render("home.hbs",{
+            res.render("index.hbs",{
                 Reply : "Typed Name is wrong"
             })
         })
@@ -82,11 +83,11 @@ route.post('/adult', (req, res) => {
     data_check.then( (result) => {
         // console.log(result)
         if( result.length === 0){
-            res.render("home.hbs",{
+            res.render("index.hbs",{
                 Reply : `NO Data Found for ${user_date} in Lucknow for age 18`
             })
         }else{
-            res.render("home.hbs",{
+            res.render("index.hbs",{
                 Reply : `Found Data for 
                 age: 18 
                 date : ${user_date}
@@ -125,11 +126,11 @@ route.post('/experienced', (req, res) => {
     data_check.then( (result) => {
         // console.log(result)
         if( result.length === 0){
-            res.render("home.hbs",{
+            res.render("index.hbs",{
                 Reply : `NO Data Found for ${user_date} in Lucknow for age 45`
             })    
         }else{
-            res.render("home.hbs",{
+            res.render("index.hbs",{
                 Reply : `Found Data for \n
                 age: 45+\n
                 date : ${user_date}\n 
