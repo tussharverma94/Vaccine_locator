@@ -12,7 +12,7 @@ request("https://cdn-api.co-vin.in/api/v2/admin/location/districts/34", {json : 
     if(err) {
         return reject(err)
     }
-    console.log(body.districts)
+    console.log(body)
 })
 
 
