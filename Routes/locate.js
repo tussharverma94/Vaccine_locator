@@ -31,7 +31,11 @@ route.post("/", (req, res) =>{
     const data_check = task(state, district, user_date, user_age)
     data_check.then( (result) => {
         // console.log(result)
-        if( result.length === 0){
+        if(typeof result == 'undefined'){
+            res.render("index",{
+                Reply : `Something Went Wrong`
+            })
+        }else if( result.length === 0){
             res.render("index",{
                 Reply : `NO Data Found for ${user_date} in ${district} for age ${user_age}`
             })
@@ -129,7 +133,11 @@ route.post('/experienced', (req, res) => {
     const data_check = task("Uttar Pradesh", "Lucknow", user_date, 45)
     data_check.then( (result) => {
         // console.log(result)
-        if( result.length === 0){
+        if(typeof result == 'undefined'){
+            res.render("index",{
+                Reply : `Something Went Wrong`
+            })
+        }else if( result.length === 0){
             res.render("index",{
                 Reply : `NO Data Found for ${user_date} in Lucknow for age 45`
             })    
