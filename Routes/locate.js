@@ -82,7 +82,11 @@ route.post('/adult', (req, res) => {
     const data_check = task("Uttar Pradesh", "Lucknow", user_date, 18)
     data_check.then( (result) => {
         // console.log(result)
-        if( result.length === 0){
+        if(typeof result == 'undefined'){
+            res.render("index",{
+                Reply : `Something Went Wrong`
+            })
+        }else if( result.length === 0){
             res.render("index",{
                 Reply : `NO Data Found for ${user_date} in Lucknow for age 18`
             })
