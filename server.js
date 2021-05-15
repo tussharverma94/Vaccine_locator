@@ -11,5 +11,5 @@ app.use(express.urlencoded({extended: true}))
 app.use("/", main_route)
 
 app.listen(SERVER_PORT, () =>{
-    console.log("Server Started at : http://localhost:4444")
+    console.log("Server Started at : http://localhost:" + SERVER_PORT)
 })
