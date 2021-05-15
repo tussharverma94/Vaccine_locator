@@ -10,7 +10,7 @@ const SERVER_PORT = process.env.PORT || 4444
 app.engine('.hbs', exphbs({ defaultLayout: '../index', extname: '.hbs' }));
 
 app.set("view engine", ".hbs")
-app.set('views', path.join(__dirname, './views')); 
+app.set('views', path.join(__dirname, 'views')); 
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
