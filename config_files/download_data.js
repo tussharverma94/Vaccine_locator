@@ -178,27 +178,29 @@ function find_district_id(state_id, user_district_name){
         // get destrict id from state_id_to_find
         req_districts = 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/' + state_id.toString()
         console.log("req_districts = " + req_districts)
-        request(req_districts, {json : true}, (err, res, body) =>{
-            if(err) {
-                return reject(err)
-            }
-            if(typeof body.districts == 'undefined'){
-                return reject("Something went wrong!")
-            }
-            console.log(body.districts)
-            for(list of body.districts){
-                // console.log(list)
-                if(list.district_name.toLowerCase() == user_district_name.toLowerCase()){
-                    // console.log("found the place that is at district: " + list.district_name +
-                    // " With district id as " + list.district_id)
-                    district_id_to_find = list.district_id
-                    resolve(district_id_to_find)
+        setTimeout(() => {
+            request(req_districts, {json : true}, (err, res, body) =>{
+                if(err) {
+                    return reject(err)
                 }
-            }
-            if(typeof district_id_to_find == 'undefined'){
-                reject("District Name is Wrong")
-            }
-        })
+                if(typeof body.districts == 'undefined'){
+                    return reject("Something went wrong!")
+                }
+                console.log(body.districts)
+                for(list of body.districts){
+                    // console.log(list)
+                    if(list.district_name.toLowerCase() == user_district_name.toLowerCase()){
+                        // console.log("found the place that is at district: " + list.district_name +
+                        // " With district id as " + list.district_id)
+                        district_id_to_find = list.district_id
+                        resolve(district_id_to_find)
+                    }
+                }
+                if(typeof district_id_to_find == 'undefined'){
+                    reject("District Name is Wrong")
+                }
+            })
+        }, 1000)
     })
 }
 
