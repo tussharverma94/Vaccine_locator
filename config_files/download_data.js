@@ -151,6 +151,27 @@ const states = [
     }
 ]
 
+function req_gov(req_to_gove){
+    return new Promise( (resolve, reject) => {
+        request(req_to_gove, {"json" : true}, (err, res, body) => {
+            if(err){
+                return reject(err)
+            }
+            resolve(body)
+        })
+    })
+}
+
+async function call_gov(link_to_pass) {
+    try{
+        const answ = await req_gov(link_to_pass)
+        return answ
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
 function find_state_id(states, user_state_name){
     return new Promise((resolve, reject) =>{
         if(states == []){
@@ -176,31 +197,52 @@ function find_district_id(state_id, user_district_name){
         // let user_district_name = "Lucknow"
 
         // get destrict id from state_id_to_find
+        
         req_districts = 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/' + state_id.toString()
-        console.log("req_districts = " + req_districts)
-        setTimeout(() => {
-            request(req_districts, {json : true}, (err, res, body) =>{
-                if(err) {
-                    return reject(err)
+    //     console.log("req_districts = " + req_districts)
+    //     request(req_districts, {json : true}, (err, res, body) =>{
+    //         if(err) {
+    //             return reject(err)
+    //         }
+    //         if(typeof body.districts == 'undefined'){
+    //             return reject("Something went wrong!")
+    //         }
+    //         console.log(body.districts)
+    //         for(list of body.districts){
+    //             // console.log(list)
+    //             if(list.district_name.toLowerCase() == user_district_name.toLowerCase()){
+    //                 // console.log("found the place that is at district: " + list.district_name +
+    //                 // " With district id as " + list.district_id)
+    //                 district_id_to_find = list.district_id
+    //                 resolve(district_id_to_find)
+    //             }
+    //         }
+    //         if(typeof district_id_to_find == 'undefined'){
+    //             reject("District Name is Wrong")
+    //         }
+    //     })
+    // })
+        const bosy = call_gov(req_districts)
+        bosy.then( (result) => {
+            if(typeof result.districts == 'undefined'){
+                return reject("Something went wrong!")
+            }
+            console.log(result.districts)
+            for(list of result.districts){
+                // console.log(list)
+                if(list.district_name.toLowerCase() == user_district_name.toLowerCase()){
+                    // console.log("found the place that is at district: " + list.district_name +
+                    // " With district id as " + list.district_id)
+                    district_id_to_find = list.district_id
+                    resolve(district_id_to_find)
                 }
-                console.log(body.districts)
-                if(typeof body.districts == 'undefined'){
-                    return reject("Something went wrong!")
-                }
-                for(list of body.districts){
-                    // console.log(list)
-                    if(list.district_name.toLowerCase() == user_district_name.toLowerCase()){
-                        // console.log("found the place that is at district: " + list.district_name +
-                        // " With district id as " + list.district_id)
-                        district_id_to_find = list.district_id
-                        resolve(district_id_to_find)
-                    }
-                }
-                if(typeof district_id_to_find == 'undefined'){
-                    reject("District Name is Wrong")
-                }
-            })
-        }, 500)
+            }
+            if(typeof district_id_to_find == 'undefined'){
+                reject("District Name is Wrong")
+            }
+        })
+        
+        
     })
 }
 
