@@ -224,10 +224,10 @@ function find_district_id(state_id, user_district_name){
     // })
         const bosy = call_gov(req_districts)
         bosy.then( (result) => {
+            console.log(result.districts)
             if(typeof result.districts == 'undefined'){
                 return reject("Something went wrong!")
             }
-            console.log(result.districts)
             for(list of result.districts){
                 // console.log(list)
                 if(list.district_name.toLowerCase() == user_district_name.toLowerCase()){
